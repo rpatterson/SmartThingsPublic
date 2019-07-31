@@ -161,7 +161,7 @@ private Map parseNonIasButtonMessage(Map descMap){
         }
         else if (descMap.command == "00") {
             buttonNumber = 2
-	    buttonState = "down"
+            buttonState = "down"
         }
         if (buttonNumber !=0) {
             def descriptionText = "$device.displayName button $buttonNumber was $buttonState"
@@ -231,15 +231,15 @@ private Map getButtonResult(buttonState, buttonNumber = 1) {
         else {
             if (timeDiff < holdPreference) {
                 buttonState = "pushed"
-		if (buttonNumber == 2) {
-		    buttonState = "down"
-		}
+                if (buttonNumber == 2) {
+                    buttonState = "down"
+                }
             }
             else {
                 buttonState = "held"
-		if (buttonNumber == 2) {
-		    buttonState = "down_hold"
-		}
+                if (buttonNumber == 2) {
+                    buttonState = "down_hold"
+                }
             }
             def descriptionText = "$device.displayName button $buttonNumber was $buttonState"
             return createEvent(name: "button", value: buttonState, data: [buttonNumber: buttonNumber], descriptionText: descriptionText, isStateChange: true)
